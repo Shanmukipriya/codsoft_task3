@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <center><h1 style="font-family: 'Times New Roman', Times, serif;">CALCULATOR</h1></center>
+  <div class="calculator">
+    <div class="display">0</div>
+    <div class="buttons">
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button class="operator">+</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button class="operator">-</button>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button class="operator">*</button>
+      <button>0</button>
+      <button>.</button>
+      <button class="operator">/</button>
+      <button class="operator">=</button>
+    </div>
+  </div>
+
+  <script>
+    let display = document.querySelector('.display');
+    let buttons = document.querySelectorAll('button');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        let value = button.textContent;
+        if (value === '=') {
+          try {
+            let result = eval(display.textContent);
+            display.textContent = result;
+          } catch (error) {
+            display.textContent = 'Error';
+          }
+        } else if (value === 'C') {
+          display.textContent = '0';
+        } else {
+          if (display.textContent === '0') {
+            display.textContent = value;
+          } else {
+            display.textContent += value;
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
